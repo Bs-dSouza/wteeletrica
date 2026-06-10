@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter,BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import './animations.css';
 import { useScrollReveal } from './hooks/useScrollReveal';
@@ -8,11 +8,11 @@ function App() {
   useScrollReveal();
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -1,0 +1,440 @@
+/* ══════════════════════════════════════════════════
+   CONTATO — segue o Design System do site
+   Cores: #0a0a0a (bg), #FFB800 (accent), branco
+   ══════════════════════════════════════════════════ */
+
+.contato {
+  background: #0a0a0a;
+  padding-bottom: 100px;
+}
+
+/* ── Cabeçalho amarelo (padrão Serviços) ──────────── */
+.contato__header {
+  background: #FFB800;
+  padding: 72px 60px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato__header::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+}
+
+.contato__header_inner {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contato__label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: 'Arial', sans-serif;
+}
+
+.contato__title {
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 900;
+  color: #0a0a0a;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.contato__title span {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.contato__subtitle {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  max-width: 560px;
+}
+
+/* Decoração circular */
+.contato__header_deco {
+  flex-shrink: 0;
+}
+
+.contato__deco_ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 48px;
+}
+
+/* ── Corpo ────────────────────────────────────────── */
+.contato__body {
+  padding: 64px 0 0;
+}
+
+.contato__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Card do formulário ───────────────────────────── */
+.contato__form_card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 184, 0, 0.18);
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contato__form_title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFB800;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contato__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contato__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contato__field_label {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Arial', sans-serif;
+}
+
+.contato__input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.contato__input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contato__input:focus {
+  border-color: #FFB800;
+  background: rgba(255, 184, 0, 0.06);
+  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.12);
+}
+
+.contato__textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contato__submit {
+  background: #FFB800;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 28px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.22s, transform 0.18s, box-shadow 0.22s;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.contato__submit:hover:not(:disabled) {
+  background: #ffc929;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 184, 0, 0.3);
+}
+
+.contato__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.contato__submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* ── Coluna direita ───────────────────────────────── */
+.contato__right_col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card WhatsApp */
+.contato__whatsapp_card {
+  background: #25D366;
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  transition: transform 0.22s, box-shadow 0.22s;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.18);
+}
+
+.contato__whatsapp_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.32);
+}
+
+.contato__whatsapp_icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.contato__whatsapp_text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.contato__whatsapp_text strong {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+}
+
+.contato__whatsapp_text span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Divisor */
+.contato__divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contato__divider::before,
+.contato__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.contato__divider span {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Arial', sans-serif;
+  white-space: nowrap;
+}
+
+/* Grid de redes sociais */
+.contato__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contato__social_card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  transition: transform 0.22s, border-color 0.22s, background 0.22s;
+  cursor: pointer;
+}
+
+.contato__social_card:hover {
+  transform: translateX(4px);
+}
+
+/* Instagram */
+.contato__social_card--instagram:hover {
+  border-color: rgba(225, 48, 108, 0.45);
+  background: rgba(225, 48, 108, 0.06);
+}
+
+.contato__social_card--instagram .contato__social_icon {
+  color: #E1306C;
+}
+
+/* TikTok */
+.contato__social_card--tiktok:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.contato__social_card--tiktok .contato__social_icon {
+  color: #ffffff;
+}
+
+/* Facebook */
+.contato__social_card--facebook:hover {
+  border-color: rgba(24, 119, 242, 0.45);
+  background: rgba(24, 119, 242, 0.06);
+}
+
+.contato__social_card--facebook .contato__social_icon {
+  color: #1877F2;
+}
+
+.contato__social_icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.22s;
+}
+
+.contato__social_info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.contato__social_info strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+}
+
+.contato__social_info span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Arial', sans-serif;
+}
+
+.contato__arrow {
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  transition: color 0.22s, transform 0.22s;
+}
+
+.contato__social_card:hover .contato__arrow {
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateX(3px);
+}
+
+.contato__whatsapp_card .contato__arrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contato__whatsapp_card:hover .contato__arrow {
+  transform: translateX(3px);
+}
+
+/* ── Responsivo ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .contato__header {
+    padding: 56px 32px 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .contato__deco_ring {
+    width: 96px;
+    height: 96px;
+  }
+
+  .contato__container {
+    grid-template-columns: 1fr;
+    padding: 0 32px;
+    gap: 32px;
+  }
+
+  .contato__form_card {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .contato__header {
+    padding: 40px 20px 48px;
+  }
+
+  .contato__container {
+    padding: 0 20px;
+  }
+
+  .contato__form_card {
+    padding: 24px 16px;
+  }
+
+  .contato__whatsapp_card {
+    padding: 18px 20px;
+  }
+}

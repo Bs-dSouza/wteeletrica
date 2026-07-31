@@ -1,4 +1,4 @@
-import { HashRouter,BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import './animations.css';
 import { useScrollReveal } from './hooks/useScrollReveal';

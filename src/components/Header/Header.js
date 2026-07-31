@@ -79,6 +79,12 @@ function Header() {
           <button className={styles["header__nav-link"]} onClick={() => scrollTo('servicos')}>
             Serviços
           </button>
+          <button className={styles["header__nav-link"]} onClick={() => scrollTo('atuacao')}>
+            Regiões
+          </button>
+          <button className={styles["header__nav-link"]} onClick={() => scrollTo('parceiros')}>
+            Parceiros
+          </button>
           <button className={styles["header__nav-link"]} onClick={() => scrollTo('contato')}>
             Contatos
           </button>

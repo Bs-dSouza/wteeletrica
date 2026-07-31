@@ -2,8 +2,9 @@
 import Hero from '../../components/Hero/Hero';
 import Sobre from '../../components/Sobre/Sobre';
 import Servicos from '../../components/Servicos/Servicos';
+import Atuacao from '../../components/Atuacao/Atuacao';
+import Parceiros from '../../components/Parceiros/Parceiros';
 import Contato from '../../components/Contato/Contato';
-
 
 function Home() {
   return (
@@ -12,6 +13,8 @@ function Home() {
       <Hero />
       <Sobre />
       <Servicos />
+      <Atuacao />
+      <Parceiros />
       <Contato />
     </div>
   );

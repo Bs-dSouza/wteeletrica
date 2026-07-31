@@ -175,6 +175,15 @@
   resize: vertical;
 }
 
+.contato__feedback {
+  margin: -4px 0 0;
+  color: #ffcf4d;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 700;
+  font-family: 'Arial', sans-serif;
+}
+
 .contato__submit {
   background: #FFB800;
   color: #0a0a0a;

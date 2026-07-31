@@ -1,5 +1,19 @@
 import { useState } from 'react';
 import styles from './Contato.module.css';
+import emailjs from '@emailjs/browser';
+
+const DEFAULT_EMAILJS_SERVICE_ID = 'service_er4mhfq';
+const DEFAULT_EMAILJS_TEMPLATE_ID = 'template_6gg3oqm';
+const DEFAULT_EMAILJS_REPLY_TEMPLATE_ID = 'template_d7ac799';
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || DEFAULT_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || DEFAULT_EMAILJS_TEMPLATE_ID;
+const EMAILJS_REPLY_TEMPLATE_ID =
+  process.env.REACT_APP_EMAILJS_REPLY_TEMPLATE_ID || DEFAULT_EMAILJS_REPLY_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'SUA_PUBLIC_KEY';
+const EMAILJS_IS_CONFIGURED =
+  Boolean(EMAILJS_SERVICE_ID) &&
+  Boolean(EMAILJS_TEMPLATE_ID) &&
+  EMAILJS_PUBLIC_KEY !== 'SUA_PUBLIC_KEY';
 
 /* ── Ícones ─────────────────────────────────────── */
 function WhatsAppIcon() {
@@ -52,23 +66,71 @@ function SendIcon() {
 
 /* ── Componente ─────────────────────────────────── */
 function Contato() {
-  const [form, setForm] = useState({ nome: '', email: '', mensagem: '' });
+  const [form, setForm] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    servico: '',
+    mensagem: '',
+  });
   const [enviado, setEnviado] = useState(false);
+  const [erroEnvio, setErroEnvio] = useState('');
 
   function handleChange(e) {
+    setErroEnvio('');
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const { nome, email, mensagem } = form;
-    const subject = encodeURIComponent(`Contato via site — ${nome}`);
-    const body = encodeURIComponent(
-      `Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`
-    );
-    window.location.href = `mailto:contato@wteeletrica.com.br?subject=${subject}&body=${body}`;
+
+    if (!EMAILJS_IS_CONFIGURED) {
+      setErroEnvio('Defina a public key do EmailJS em REACT_APP_EMAILJS_PUBLIC_KEY para ativar o envio do orçamento.');
+      return;
+    }
+
     setEnviado(true);
-    setTimeout(() => setEnviado(false), 4000);
+
+    try {
+      const templateParams = {
+        name: form.nome,
+        email: form.email,
+        telefone: form.telefone,
+        servico: form.servico,
+        message: form.mensagem,
+        time: new Date().toLocaleString('pt-BR'),
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (EMAILJS_REPLY_TEMPLATE_ID) {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_REPLY_TEMPLATE_ID,
+          templateParams,
+          EMAILJS_PUBLIC_KEY
+        );
+      }
+
+      setForm({
+        nome: '',
+        email: '',
+        telefone: '',
+        servico: '',
+        mensagem: '',
+      });
+      window.alert('Orcamento enviado com sucesso!');
+    } catch (error) {
+      console.error('Erro ao enviar orçamento com EmailJS:', error);
+      setErroEnvio('Nao foi possivel enviar agora. Tente novamente em instantes.');
+    } finally {
+      setEnviado(false);
+    }
   }
 
   return (
@@ -100,7 +162,7 @@ function Contato() {
             <div className={styles.contato__form_card}>
               <h3 className={styles.contato__form_title}>
                 <EmailIcon />
-                Envie um e-mail
+                Solicite seu orçamento
               </h3>
               <form onSubmit={handleSubmit} className={styles.contato__form} noValidate>
                 <div className={styles.contato__field}>
@@ -132,6 +194,33 @@ function Contato() {
                   />
                 </div>
                 <div className={styles.contato__field}>
+                  <label htmlFor="telefone" className={styles.contato__field_label}>Telefone</label>
+                  <input
+                    id="telefone"
+                    name="telefone"
+                    type="tel"
+                    placeholder="Ex: 11 99999-9999"
+                    className={styles.contato__input}
+                    value={form.telefone}
+                    onChange={handleChange}
+                    required
+                    autoComplete="tel"
+                  />
+                </div>
+                <div className={styles.contato__field}>
+                  <label htmlFor="servico" className={styles.contato__field_label}>Serviço desejado</label>
+                  <input
+                    id="servico"
+                    name="servico"
+                    type="text"
+                    placeholder="Ex: Perfil de LED, instalação, projeto"
+                    className={styles.contato__input}
+                    value={form.servico}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className={styles.contato__field}>
                   <label htmlFor="mensagem" className={styles.contato__field_label}>Mensagem</label>
                   <textarea
                     id="mensagem"
@@ -144,13 +233,16 @@ function Contato() {
                     required
                   />
                 </div>
+                {erroEnvio ? (
+                  <p className={styles.contato__feedback}>{erroEnvio}</p>
+                ) : null}
                 <button type="submit" className={styles.contato__submit} disabled={enviado}>
                   {enviado ? (
-                    'Abrindo cliente de e-mail...'
+                    'Enviando orçamento...'
                   ) : (
                     <>
                       <SendIcon />
-                      Enviar Mensagem
+                      Enviar Orçamento
                     </>
                   )}
                 </button>

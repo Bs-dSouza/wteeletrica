@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wteeletrica/static/css/main.97fcb424.css",
-    "main.js": "/wteeletrica/static/js/main.74384292.js",
+    "main.css": "/wteeletrica/static/css/main.68ef4663.css",
+    "main.js": "/wteeletrica/static/js/main.e5fc3ebc.js",
     "static/js/453.ef1baaae.chunk.js": "/wteeletrica/static/js/453.ef1baaae.chunk.js",
     "static/media/Group3.png": "/wteeletrica/static/media/Group3.d07d108c5b14b61339d1.png",
     "static/media/eletricista.jpg": "/wteeletrica/static/media/eletricista.9d983ae7094e37748433.jpg",
@@ -32,12 +32,12 @@
     "static/media/led3.jpeg": "/wteeletrica/static/media/led3.6e2b80639f7bf8558e07.jpeg",
     "static/media/projeto3.jpeg": "/wteeletrica/static/media/projeto3.843f4e3a9238e17dba2c.jpeg",
     "index.html": "/wteeletrica/index.html",
-    "main.97fcb424.css.map": "/wteeletrica/static/css/main.97fcb424.css.map",
-    "main.74384292.js.map": "/wteeletrica/static/js/main.74384292.js.map",
+    "main.68ef4663.css.map": "/wteeletrica/static/css/main.68ef4663.css.map",
+    "main.e5fc3ebc.js.map": "/wteeletrica/static/js/main.e5fc3ebc.js.map",
     "453.ef1baaae.chunk.js.map": "/wteeletrica/static/js/453.ef1baaae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.97fcb424.css",
-    "static/js/main.74384292.js"
+    "static/css/main.68ef4663.css",
+    "static/js/main.e5fc3ebc.js"
   ]
 }

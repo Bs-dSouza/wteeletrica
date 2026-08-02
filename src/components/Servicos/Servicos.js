@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Servicos.module.css";
 
 /* ── Ícones SVG por serviço ─────────────────────── */
@@ -253,6 +253,7 @@ const servicos = [
       require("../../assets/Imagens/Lustres/lustre4.jpeg"),
       require("../../assets/Imagens/Lustres/lustre5.jpeg"),
       require("../../assets/Imagens/Lustres/lustre6.jpeg"),
+
     ],
   },
   {
@@ -261,19 +262,34 @@ const servicos = [
     titulo: "Instalações Elétricas",
     descricao:
       "Fazemos qualquer tipo de instalação elétrica residencial e comercial com segurança e qualidade garantida.",
-    foto: null,
+    foto: require("../../assets/Imagens/Instalacoes/1.jpeg"),
     destaque: false,
-    fotos: [],
+    fotos: [
+      require("../../assets/Imagens/Instalacoes/1.jpeg"),
+      require("../../assets/Imagens/Instalacoes/2.jpeg"),
+      require("../../assets/Imagens/Instalacoes/3.jpeg"),
+      require("../../assets/Imagens/Instalacoes/4.jpeg"),
+      require("../../assets/Imagens/Instalacoes/5.jpeg"),
+      require("../../assets/Imagens/Instalacoes/6.jpeg"),
+    ],
   },
   {
     id: 5,
     icon: <IconManutencao />,
-    titulo: "Manutenções Preventivas",
+    titulo: "Quadros Elétricos e Manutenção",
     descricao:
-      "Evite panes e acidentes com manutenções periódicas. Identificamos falhas antes que causem problemas.",
-    foto: null,
+      "Realizamos manutenção elétrica e instalação de quadros elétricos, garantindo segurança e eficiência para sua residência ou comércio.",
+    foto: require("../../assets/Imagens/ManuQuadros/1.mp4"),
     destaque: true,
     fotos: [],
+    videos: [
+      require("../../assets/Imagens/ManuQuadros/1.mp4"),
+      require("../../assets/Imagens/ManuQuadros/2.mp4"),
+      require("../../assets/Imagens/ManuQuadros/3.mp4"),
+      require("../../assets/Imagens/ManuQuadros/4.mp4"),
+      require("../../assets/Imagens/ManuQuadros/5.mp4"),
+    ],
+    badge: "Quadros em ação",
   },
   {
     id: 6,
@@ -281,9 +297,17 @@ const servicos = [
     titulo: "Automatização",
     descricao:
       "Tornamos sua residência ou empresa mais inteligente com automação de iluminação e circuitos elétricos.",
-    foto: null,
-    destaque: false,
+    foto: require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51.mp4"),
+    destaque: true,
     fotos: [],
+    videos: [
+      require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51.mp4"),
+      require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51 (1).mp4"),
+      require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51 (2).mp4"),
+      require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51 (3).mp4"),
+      require("../../assets/Imagens/Automacao/WhatsApp Video 2026-08-01 at 19.35.51 (4).mp4"),
+    ],
+    badge: "Automação em ação",
   },
 ];
 
@@ -291,12 +315,93 @@ const servicos = [
 function Servicos() {
   const [abrirModal, setAbrirModal] = useState(false);
   const [servicoSelecionado, setServicoSelecionado] = useState(null);
+  const [imagemSelecionadaIndex, setImagemSelecionadaIndex] = useState(null);
+
+  const imagensDoServico = servicoSelecionado?.fotos || [];
+  const imagemExpandida =
+    imagemSelecionadaIndex !== null ? imagensDoServico[imagemSelecionadaIndex] : null;
 
   const abrirModalImagens = (servico) => {
     setServicoSelecionado(servico);
     setAbrirModal(true);
   };
+
+  const abrirImagemTelaCheia = (index) => {
+    setImagemSelecionadaIndex(index);
+  };
+
+  const fecharImagemTelaCheia = () => {
+    setImagemSelecionadaIndex(null);
+  };
+
+  const mostrarImagemAnterior = () => {
+    if (!imagensDoServico.length) {
+      return;
+    }
+
+    setImagemSelecionadaIndex((indexAtual) => {
+      if (indexAtual === null) {
+        return 0;
+      }
+
+      return (indexAtual - 1 + imagensDoServico.length) % imagensDoServico.length;
+    });
+  };
+
+  const mostrarProximaImagem = () => {
+    if (!imagensDoServico.length) {
+      return;
+    }
+
+    setImagemSelecionadaIndex((indexAtual) => {
+      if (indexAtual === null) {
+        return 0;
+      }
+
+      return (indexAtual + 1) % imagensDoServico.length;
+    });
+  };
+
+  useEffect(() => {
+    if (imagemSelecionadaIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        fecharImagemTelaCheia();
+      }
+
+      if (event.key === "ArrowLeft") {
+        setImagemSelecionadaIndex((indexAtual) => {
+          if (indexAtual === null || !imagensDoServico.length) {
+            return indexAtual;
+          }
+
+          return (indexAtual - 1 + imagensDoServico.length) % imagensDoServico.length;
+        });
+      }
+
+      if (event.key === "ArrowRight") {
+        setImagemSelecionadaIndex((indexAtual) => {
+          if (indexAtual === null || !imagensDoServico.length) {
+            return indexAtual;
+          }
+
+          return (indexAtual + 1) % imagensDoServico.length;
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [imagemSelecionadaIndex, imagensDoServico.length]);
+
   const fecharModal = () => {
+    fecharImagemTelaCheia();
     setServicoSelecionado(null);
     setAbrirModal(false);
   };
@@ -363,7 +468,19 @@ function Servicos() {
             >
               {/* Área da foto */}
               <div className={styles.servicos__card_img}>
-                {s.foto ? (
+                {s.videos && s.videos.length > 0 ? (
+                  <>
+                    <video
+                      className={styles.servicos__card_video}
+                      src={s.videos[0]}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                    <div className={styles.servicos__card_badge}>{s.badge || "Veja o projeto"}</div>
+                  </>
+                ) : s.foto ? (
                   <img src={s.foto} alt={s.titulo} />
                 ) : (
                   <div className={styles.servicos__card_placeholder}>
@@ -400,14 +517,34 @@ function Servicos() {
                 <h2>{servicoSelecionado.titulo}</h2>
 
                 <div className={styles.galeria}>
-                  {servicoSelecionado.fotos && servicoSelecionado.fotos.length > 0 ? (
-                    servicoSelecionado.fotos.map((foto, index) => (
-                      <img
-                        key={index}
-                        src={foto}
-                        alt={`${servicoSelecionado.titulo} ${index + 1}`}
-                      />
-                    ))
+                  {(servicoSelecionado.videos && servicoSelecionado.videos.length > 0) ||
+                  (servicoSelecionado.fotos && servicoSelecionado.fotos.length > 0) ? (
+                    <>
+                      {servicoSelecionado.videos && servicoSelecionado.videos.map((video, index) => (
+                        <div key={`video-${index}`} className={styles.mediaCard}>
+                          <video
+                            className={styles.mediaCard__video}
+                            src={video}
+                            controls
+                            muted
+                            playsInline
+                            preload="metadata"
+                          />
+                          <span className={styles.mediaCard__label}>{`Video ${index + 1}`}</span>
+                        </div>
+                      ))}
+                      {servicoSelecionado.fotos && servicoSelecionado.fotos.map((foto, index) => (
+                        <div key={`foto-${index}`} className={styles.mediaCard}>
+                          <img
+                            className={styles.mediaCard__image}
+                            src={foto}
+                            alt={`${servicoSelecionado.titulo} ${index + 1}`}
+                            onClick={() => abrirImagemTelaCheia(index)}
+                          />
+                          <span className={styles.mediaCard__label}>{`Foto ${index + 1}`}</span>
+                        </div>
+                      ))}
+                    </>
                   ) : (
                     <div className={styles.noImages}>
                       <p>Em breve, fotos de serviços realizados nesta categoria!</p>
@@ -415,6 +552,65 @@ function Servicos() {
                   )}
                 </div>
               </div>
+            </div>
+          )}
+          {imagemExpandida && (
+            <div
+              className={styles.lightboxOverlay}
+              onClick={fecharImagemTelaCheia}
+            >
+              <button
+                type="button"
+                className={`${styles.lightboxNav} ${styles.lightboxNavPrev}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  mostrarImagemAnterior();
+                }}
+                aria-label="Imagem anterior"
+              >
+                ‹
+              </button>
+
+              <div
+                className={styles.lightboxContent}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className={styles.lightboxClose}
+                  onClick={fecharImagemTelaCheia}
+                  aria-label="Fechar imagem"
+                >
+                  ✕
+                </button>
+
+                <img
+                  className={styles.lightboxImage}
+                  src={imagemExpandida}
+                  alt={`${servicoSelecionado.titulo} ${imagemSelecionadaIndex + 1}`}
+                />
+
+                <div className={styles.lightboxFooter}>
+                  <span className={styles.lightboxCounter}>
+                    {imagemSelecionadaIndex + 1} / {imagensDoServico.length}
+                  </span>
+                  <span className={styles.lightboxHint}>
+                    Use as setas do teclado para navegar
+                  </span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className={`${styles.lightboxNav} ${styles.lightboxNavNext}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  mostrarProximaImagem();
+                }}
+                aria-label="Próxima imagem"
+              >
+                ›
+              </button>
             </div>
           )}
         </div>

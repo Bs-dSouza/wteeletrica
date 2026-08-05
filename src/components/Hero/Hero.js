@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
-import heroBg from "../../assets/Imagens/Group3.png";
+import heroBg from "../../assets/Imagens/Group3.jpg";
 
 function WhatsAppIcon() {
   return (
@@ -26,12 +27,42 @@ function StarIcon() {
 }
 
 function Hero() {
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  useEffect(() => {
+    let frameId;
+    let idleId;
+
+    const loadBackground = () => {
+      setBackgroundImage(
+        `linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.88) 42%, rgba(10,10,10,0.25) 100%), url(${heroBg})`
+      );
+    };
+
+    frameId = window.requestAnimationFrame(() => {
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(loadBackground, { timeout: 500 });
+        return;
+      }
+
+      loadBackground();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+
+      if (idleId && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="hero"
       className={styles.hero}
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.88) 42%, rgba(10,10,10,0.25) 100%), url(${heroBg})`,
+        backgroundImage,
       }}
     >
       <div className={styles.hero__content}>

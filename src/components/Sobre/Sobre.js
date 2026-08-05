@@ -80,6 +80,11 @@ function Sobre() {
               src={eletricista}
               alt="Eletricista WTE Elétrica"
               className={styles.sobre__image}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
+              width="500"
+              height="400"
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
 .sobre {
   background: #0a0a0a;
   padding: 100px 0 80px;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .sobre__container {
@@ -58,6 +60,7 @@
 }
 
 .sobre__image {
+  display: block;
   width: 100%;
   max-width: 500px;
   height: 400px;

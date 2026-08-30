@@ -1,12 +1,8 @@
+import claraluxImage from '../../assets/Imagens/claralux.jpg';
 import styles from './Parceiros.module.css';
 
 const parceiros = [
-  { nome: 'Construtora Horizonte', categoria: 'Construtora' },
-  { nome: 'Prime Engenharia', categoria: 'Execução e obras' },
-  { nome: 'Casa da Iluminação', categoria: 'Materiais elétricos' },
-  { nome: 'Centro do Eletricista', categoria: 'Distribuidor parceiro' },
-  { nome: 'Acabamento Urbano', categoria: 'Loja parceira' },
-  { nome: 'Grupo Vertical', categoria: 'Condomínios e síndicos' },
+  { nome: 'Clara Lux', categoria: 'Iluminação', imagem: claraluxImage },
 ];
 
 function HandshakeIcon() {
@@ -27,11 +23,20 @@ function Parceiros() {
         <div className={`${styles.parceiros__intro} reveal reveal--left`}>
           <span className={styles.parceiros__label}>Rede de confiança</span>
           <h2 className={styles.parceiros__title}>
-            Parceiros que fortalecem cada <span>entrega da WTE Elétrica</span>
+            Marcas que fortalecem cada <span>entrega da WTE Elétrica</span>
           </h2>
           <p className={styles.parceiros__text}>
-            Espaço ideal para destacar construtoras, lojas de materiais e fornecedores que caminham junto com a sua operação.
+            A Clara Lux já faz parte dessa rede. Se a sua empresa busca atuar com projetos elétricos, iluminação e execução com padrão profissional, este é o espaço certo para construir uma parceria comercial com a WTE Elétrica.
           </p>
+          <div className={styles.parceiros__cta_box}>
+            <strong>Quer ser um parceiro da WTE?</strong>
+            <p>
+              Abrimos espaço para fornecedores, lojas, construtoras e marcas que queiram gerar negócios em conjunto, com atendimento técnico e relacionamento de longo prazo.
+            </p>
+            <a className={styles.parceiros__cta_link} href="#contato">
+              Falar sobre parceria
+            </a>
+          </div>
         </div>
 
         <div className={`${styles.parceiros__panel} reveal reveal--right`}>
@@ -40,8 +45,8 @@ function Parceiros() {
               <HandshakeIcon />
             </div>
             <div>
-              <strong>Empresas parceiras</strong>
-              <span>Selecione os nomes reais quando quiser atualizar</span>
+              <strong>Parceiro em destaque</strong>
+              <span>Conheça uma marca que já soma valor aos nossos projetos</span>
             </div>
           </div>
 
@@ -49,12 +54,34 @@ function Parceiros() {
             {parceiros.map((parceiro, index) => (
               <article
                 key={parceiro.nome}
-                className={`${styles.parceiros__card} reveal reveal--up reveal--delay-${(index % 6) + 1}`}
+                className={`${styles.parceiros__card} ${parceiro.imagem ? styles.parceiros__card_with_image : ''} reveal reveal--up reveal--delay-${(index % 6) + 1}`}
               >
+                {parceiro.imagem && (
+                  <div className={styles.parceiros__image_wrap}>
+                    <img
+                      src={parceiro.imagem}
+                      alt={parceiro.nome}
+                      className={styles.parceiros__image}
+                    />
+                  </div>
+                )}
                 <span className={styles.parceiros__category}>{parceiro.categoria}</span>
                 <h3 className={styles.parceiros__name}>{parceiro.nome}</h3>
+                <p className={styles.parceiros__description}>
+                  Referência em iluminação, contribuindo com soluções que elevam o acabamento e a percepção de valor de cada entrega.
+                </p>
               </article>
             ))}
+          </div>
+
+          <div className={styles.parceiros__footer_callout}>
+            <strong>Sua empresa pode aparecer aqui.</strong>
+            <p>
+              Buscamos parceiros com visão de qualidade, agilidade comercial e compromisso com uma boa experiência para o cliente final.
+            </p>
+            {/* <a className={styles.parceiros__footer_link} href="#contato">
+              Solicitar contato comercial
+            </a> */}
           </div>
         </div>
       </div>

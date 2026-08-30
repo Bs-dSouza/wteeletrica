@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wteeletrica/static/css/main.caa4649e.css",
-    "main.js": "/wteeletrica/static/js/main.71c262a3.js",
+    "main.css": "/wteeletrica/static/css/main.116891d2.css",
+    "main.js": "/wteeletrica/static/js/main.91a38df3.js",
     "static/js/453.5988bbae.chunk.js": "/wteeletrica/static/js/453.5988bbae.chunk.js",
     "static/media/WhatsApp Video 2026-08-01 at 19.35.51 (3).mp4": "/wteeletrica/static/media/WhatsApp Video 2026-08-01 at 19.35.51 (3).8060278ba5c5ef1a1254.mp4",
     "static/media/2.mp4": "/wteeletrica/static/media/2.131ba21454d2bceb1daf.mp4",
@@ -47,13 +47,14 @@
     "static/media/2.jpeg": "/wteeletrica/static/media/2.378955ec4af076def3a2.jpeg",
     "static/media/1.jpeg": "/wteeletrica/static/media/1.cdccefa3025b815f1c2a.jpeg",
     "static/media/4.jpeg": "/wteeletrica/static/media/4.32929f3e193596163b09.jpeg",
+    "static/media/claralux.jpg": "/wteeletrica/static/media/claralux.276c5c43be99d1ddb4ad.jpg",
     "index.html": "/wteeletrica/index.html",
-    "main.caa4649e.css.map": "/wteeletrica/static/css/main.caa4649e.css.map",
-    "main.71c262a3.js.map": "/wteeletrica/static/js/main.71c262a3.js.map",
+    "main.116891d2.css.map": "/wteeletrica/static/css/main.116891d2.css.map",
+    "main.91a38df3.js.map": "/wteeletrica/static/js/main.91a38df3.js.map",
     "453.5988bbae.chunk.js.map": "/wteeletrica/static/js/453.5988bbae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.caa4649e.css",
-    "static/js/main.71c262a3.js"
+    "static/css/main.116891d2.css",
+    "static/js/main.91a38df3.js"
   ]
 }

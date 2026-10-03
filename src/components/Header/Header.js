@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
-import logo from "../../assets/Imagens/logo.png";
+import logo from "../../assets/Imagens/logotipo.png";
 
 function FacebookIcon() {
   return (

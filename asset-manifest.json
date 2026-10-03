@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wteeletrica/static/css/main.116891d2.css",
-    "main.js": "/wteeletrica/static/js/main.91a38df3.js",
+    "main.js": "/wteeletrica/static/js/main.f0ab68c6.js",
     "static/js/453.5988bbae.chunk.js": "/wteeletrica/static/js/453.5988bbae.chunk.js",
     "static/media/WhatsApp Video 2026-08-01 at 19.35.51 (3).mp4": "/wteeletrica/static/media/WhatsApp Video 2026-08-01 at 19.35.51 (3).8060278ba5c5ef1a1254.mp4",
     "static/media/2.mp4": "/wteeletrica/static/media/2.131ba21454d2bceb1daf.mp4",
@@ -15,9 +15,9 @@
     "static/media/4.mp4": "/wteeletrica/static/media/4.d193185d115c5d2efa25.mp4",
     "static/media/Group3.jpg": "/wteeletrica/static/media/Group3.11ae01727bf7695b2af3.jpg",
     "static/media/eletricista.jpg": "/wteeletrica/static/media/eletricista.03d04f11a595fcd045ec.jpg",
+    "static/media/logotipo.png": "/wteeletrica/static/media/logotipo.104428d1bf906882ff3a.png",
     "static/media/projeto5.jpeg": "/wteeletrica/static/media/projeto5.111f914cb64ccf877376.jpeg",
     "static/media/projeto4.jpeg": "/wteeletrica/static/media/projeto4.287d57c8458a3f325c73.jpeg",
-    "static/media/logo.png": "/wteeletrica/static/media/logo.ae7c5164678abd5a1908.png",
     "static/media/led2.jpeg": "/wteeletrica/static/media/led2.4fcbaa1db20e33f879dc.jpeg",
     "static/media/lustre2.jpeg": "/wteeletrica/static/media/lustre2.b73f0bf5b8097e7f1a48.jpeg",
     "static/media/led1.jpeg": "/wteeletrica/static/media/led1.73797f7e45338c77de7d.jpeg",
@@ -50,11 +50,11 @@
     "static/media/claralux.jpg": "/wteeletrica/static/media/claralux.276c5c43be99d1ddb4ad.jpg",
     "index.html": "/wteeletrica/index.html",
     "main.116891d2.css.map": "/wteeletrica/static/css/main.116891d2.css.map",
-    "main.91a38df3.js.map": "/wteeletrica/static/js/main.91a38df3.js.map",
+    "main.f0ab68c6.js.map": "/wteeletrica/static/js/main.f0ab68c6.js.map",
     "453.5988bbae.chunk.js.map": "/wteeletrica/static/js/453.5988bbae.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.116891d2.css",
-    "static/js/main.91a38df3.js"
+    "static/js/main.f0ab68c6.js"
   ]
 }

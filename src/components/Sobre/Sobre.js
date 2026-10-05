@@ -108,7 +108,7 @@ function Sobre() {
             <span>Escolha a WTEEléetrica.</span>
           </p>
           <a
-            href="https://wa.me/5500000000000"
+            href="https://wa.me/5511965437316"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.sobre__cta_btn}

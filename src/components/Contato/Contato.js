@@ -255,7 +255,7 @@ function Contato() {
 
             {/* Card WhatsApp */}
             <a
-              href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+              href="https://wa.me/5511965437316?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contato__whatsapp_card}

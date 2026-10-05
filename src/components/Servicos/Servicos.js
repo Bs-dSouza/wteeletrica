@@ -498,7 +498,13 @@ function Servicos() {
                 <div className={styles.servicos__card_icon_wrap}>{s.icon}</div>
                 <h3 className={styles.servicos__card_title}>{s.titulo}</h3>
                 <p className={styles.servicos__card_desc}>{s.descricao}</p>
-                <a href="#atendimento" className={styles.servicos__card_link}>
+                <a
+                  href={`https://wa.me/5511965437316?text=${encodeURIComponent(`Olá! Vim pelo site e gostaria de solicitar o serviço: ${s.titulo}.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.servicos__card_link}
+                  onClick={(event) => event.stopPropagation()}
+                >
                   Solicitar serviço <IconArrow />
                 </a>
               </div>
